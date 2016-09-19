@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	char arr[n];
+	scanf("%s", &arr);
+	char hst[11] = "hackerearth";
+	int noti = n/11;
+	int count = 0;
+	int flag = 0;
+	
+	while(noti>0){
+		int i=0, j;
+		for(i; i<11; i++){
+			flag=0;
+			j=0;
+			for(j; j<n; j++){
+				if(hst[i]==arr[j]){
+					arr[j]='n';
+					flag = 1;
+					break;
+				}
+			}
+			if(flag==0){
+				noti=0;
+				break;
+			}
+		}
+		if(noti!=0){
+		count++;
+		}
+		if(noti==0){
+		break;
+		}
+		noti--;
+	}
+	
+    printf("%d",count);
+    return 0;
+}
