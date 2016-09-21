@@ -1,0 +1,37 @@
+#include <stdio.h>
+int forValue(int l, int r, int N, int mishki, int arr[]){
+	int temp[N];
+	for(l; l<=r; l++){
+			temp[l-1] = arr[l-1];
+			while(temp[l-1]>0){
+				temp[l-1] /= 2;
+					mishki = (mishki==1) ? 0 : 1;
+			}// printf("if prev 1 then it should zero = %d\n",mishki);
+		}
+	return mishki;
+}
+int main()
+{
+	int N, Q;
+	scanf("%d %d",&N,&Q);
+	int arr[N];
+	//int i=0;
+	for(int i=0; i<N; i++){
+		scanf("%d",&arr[i]);
+	}
+	int l, r;
+	int mishki;
+//	int temp[N];
+	while(Q>0){
+		mishki = 1;
+		scanf("%d %d",&l,&r);
+		mishki = forValue(l, r, N, mishki, arr);
+		if(mishki==0){
+			printf("Mishki\n");
+		}else{
+			printf("Hacker\n");
+		}
+		Q--;
+	}
+    return 0;
+}
