@@ -1,0 +1,71 @@
+#include <iostream>
+using namespace std;
+
+void fastscan(long &x)
+    {
+        bool neg=false;
+        register long c;
+        x =0;
+        c=getchar();
+        if(c=='-')
+        {
+            neg = true;
+            c=getchar();
+        }
+        for(;(c>47 && c<58);c=getchar())
+            x = (x<<1) + (x<<3) +c -48;
+        if(neg)
+            x *=-1;
+    }
+
+
+int main()
+{
+	long N;
+//	scanf("%ld\n",&N);
+	fastscan(N);
+	long A[N];
+	for(int i=0; i<N; i++){
+	//	scanf("%ld ",&A[i]); 
+		fastscan(A[i]);
+	}
+	printf("\n");
+	long Q;
+	scanf("%ld\n",&Q);
+//	fastscan(Q);
+	int type, count;
+	long f;
+	for(int i=0; i<Q; i++){
+		scanf("%d %ld\n",&type,&f);
+	//	scanf("%d ",&type);
+	//	fastscan(f);
+		if(type==0){
+			for(int j=0; j<N; j++){
+			count=0;
+			for(int k=0; k<N; k++){
+				if(A[j] == A[k]){
+				count++;
+				}
+				if(count>=f){
+					printf("%ld\n",A[j]);
+					break;
+				}
+			}if(count>=f) break;
+		}if(count<f) printf("0\n");
+		}else{
+			for(int j=0; j<N; j++){
+			count=0;
+			for(int k=0; k<N; k++){
+				if(A[j] == A[k]){
+				count++;
+				}
+				
+			}if(count==f){
+					printf("%ld\n",A[j]);
+					break;
+				}
+			}if(count!=f) printf("0\n");
+	}
+}
+	return 0;
+}
